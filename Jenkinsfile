@@ -1,5 +1,8 @@
-node(label:'master') { 
-    stage('SCM) {
-   	echo 'SCM stage complete' 
-    } 
-}
+pipeline {
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
