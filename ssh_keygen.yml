@@ -1,0 +1,27 @@
+---
+- name: Add ssh keys
+  hosts: all
+  become: false
+  vars:
+    FORMAT_PUB: .pub
+
+  tasks:
+  - name: Generate ssh key
+    community.crypto.openssh_keypair:
+      path: "{{ PATH_SSH_KEY }}"
+      type: "{{ TYPE_SSH_KEY }}"
+      size: "{{ SIZE_SSH_KEY }}"
+    delegate_to: localhost
+
+  - name:
+    copy:
+      src: "{{ PATH_SSH_KEY }}"
+      dest: ~/.ssh/
+      mode: '0600'
+    delegate_to: localhost
+
+  - name: Copy generated pub
+    copy:
+      src: "{{ PATH_SSH_KEY }}{{ FORMAT_PUB }}"
+      dest: ~/.ssh/authorized_keys
+      mode: '0600'
