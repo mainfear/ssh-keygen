@@ -10,7 +10,10 @@ agent any
         stage('Upload to GitHub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github_cred', usernameVariable: 'Username', passwordVariable: 'Password')]) {
-                    sh 'git init'
+                    sh 'git config --global user.email "example@mail.com"
+                    sh 'git config --global user.name "mainfear"
+                    sh 'git clone https://github.com/mainfear/ssh-keygen'
+                    sh 'cd ./ssh-keygen'
                     sh 'git add inventory.ini'
                     sh 'git commit -m "Add Ansible inventory file"'
                     sh 'git remote add origin https://github.com/mainfear/ssh-keygen'
