@@ -16,7 +16,6 @@ agent any
                     sh 'cd ./ssh-keygen'
                     sh 'git add inventory.ini'
                     sh 'git commit -m "Add Ansible inventory file"'
-                    sh 'git remote add origin https://github.com/mainfear/ssh-keygen'
                     sh 'git push --set-upstream origin main'
                 }
             }
