@@ -14,7 +14,7 @@ agent any
                     sh 'git config --global user.name "mainfear"'
                     sh 'git add inventory.ini'
                     sh 'git commit -m "Add Ansible inventory file"'
-                    sh 'git push --set-upstream origin main'
+                    sh 'git push origin HEAD:main'
                 }
             }
         }
